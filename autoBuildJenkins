@@ -1,18 +1,30 @@
-node {
-  stage("Clone the project") {
-    git branch: 'master', url: 'https://github.com/Loic-974/springBaseRestApi.git'
-  }
-
-  stage("Compilation") {
-    sh "./mvnw clean install -DskipTests"
-  }
-
-  stage("Tests and Deployment") {
-    stage("Runing unit tests") {
-      sh "./mvnw test -Punit"
+pipeline {
+    agent any
+    tools {
+        maven "MAVEN"
+        jdk "JDK"
     }
-    stage("Deployment") {
-      sh 'nohup ./mvnw spring-boot:run -Dserver.port=8001 &'
-    }
-  }
+    stages {
+        stage('Initialize'){
+            steps{
+                echo "PATH = ${M2_HOME}/bin:${PATH}"
+                echo "M2_HOME = /opt/maven"
+            }
+        }
+        stage('Build') {
+            steps {
+                dir("/var/lib/jenkins/workspace/baseRestApi") {
+                sh 'mvn -B -DskipTests clean package'
+                }
+            }
+        }
+     }
+    post {
+       always {
+          junit(
+        allowEmptyResults: true,
+        testResults: '*/test-reports/.xml'
+      )
+      }
+   } 
 }
