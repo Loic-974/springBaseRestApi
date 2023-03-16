@@ -17,6 +17,10 @@ pipeline {
                 }
             }
         }
+        
+        stage("Deployment") {
+     	 sh java -jar /var/lib/jenkins/workspace/baseRestApi/target/baseRestApi-0.0.1-SNAPSHOT.jar
+   	 	}
      }
     post {
        always {
