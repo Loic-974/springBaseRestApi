@@ -1,6 +1,6 @@
 node {
   stage("CHANGE PERMISSION") {
-       chmod -R 777 /var/lib/jenkins/workspace/baseRestApi
+      sh 'chmod -R 777 /var/lib/jenkins/workspace/baseRestApi'
     }
 }
 
