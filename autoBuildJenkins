@@ -19,8 +19,10 @@ pipeline {
         }
         stage("Deployment") {
       		steps {
-      		    sh 'chmod -R 777 /var/lib/jenkins/workspace/baseRestApi'
+      		    sh 'chmod +x ./var/lib/jenkins/workspace/baseRestApi/mvnw'
+      		    sh 'ls -l ./var/lib/jenkins/workspace/baseRestApi/mvnw'
       			sh 'nohup ./mvnw spring-boot:run -Dserver.port=8001 &'
+      			
       			}
     	}
         
