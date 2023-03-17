@@ -21,7 +21,7 @@ pipeline {
       		steps {
       		
       			sh 'chmod +x ./mvnw'
-      		    sh 'nohup ./mvnw spring-boot:run'
+      		    sh 'nohup ./mvnw spring-boot:run &'
       			}
     	}
 
