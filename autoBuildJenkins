@@ -12,7 +12,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                dir("/var/lib/jenkins/workspace/baseRestApi") {
+                dir("/var/lib/jenkins/workspace/test") {
                 sh 'mvn -B -DskipTests clean package'
                 }
             }
