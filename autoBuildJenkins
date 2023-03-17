@@ -21,8 +21,10 @@ pipeline {
       		steps {
       		    sh 'chmod +x /var/lib/jenkins/workspace/baseRestApi/mvnw'
       		    sh 'ls -l /var/lib/jenkins/workspace/baseRestApi/mvnw'
+      		    sh 'chown root:root /var/lib/jenkins/workspace/baseRestApi/mvnw'
+      		    sh 'ls -l /var/lib/jenkins/workspace/baseRestApi/mvnw'
       			sh 'nohup ./mvnw spring-boot:run -Dserver.port=8001 &'
-      			
+      			sh 'ls -l /var/lib/jenkins/workspace/baseRestApi/mvnw'
       			}
     	}
         
