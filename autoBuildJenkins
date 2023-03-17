@@ -20,7 +20,8 @@ pipeline {
         stage("Deployment") {
       		steps {
       		
-      		 sh 'java -jar  /var/lib/jenkins/workspace/Test/target/baseRestApi-0.0.1-SNAPSHOT.war --server.port=9090'
+      			sh 'chmod +x ./mvnw'
+      		    sh 'nohup ./mvnw spring-boot:run'
       			}
     	}
 
