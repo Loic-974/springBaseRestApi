@@ -33,7 +33,7 @@ pipeline {
       
       success {
       		sh 'chmod +x ./mvnw'
-      		sh 'nohup ./mvnw spring-boot:start &'
+      		sh 'nohup ./mvnw spring-boot:start'
       }
    } 
 }
