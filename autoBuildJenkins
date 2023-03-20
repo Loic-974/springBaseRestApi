@@ -34,7 +34,7 @@ pipeline {
       success {
       		sh 'chmod +x ./mvnw'
  
-      		sh 'java -jar /var/lib/jenkins/workspace/Test/target/baseRestApi-0.0.1-SNAPSHOT.jar &'
+      		sh 'java -jar /var/lib/jenkins/workspace/Test/target/baseRestApi-0.0.1-SNAPSHOT.jar'
       }
    } 
 }
