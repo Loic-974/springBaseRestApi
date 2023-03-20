@@ -33,7 +33,8 @@ pipeline {
       
       success {
       		sh 'chmod +x ./mvnw'
-      		sh 'nohup ./mvnw spring-boot:run'
+ 
+      		sh 'java - jar /var/lib/jenkins/workspace/Test/target/baseRestApi-0.0.1-SNAPSHOT &'
       }
    } 
 }
