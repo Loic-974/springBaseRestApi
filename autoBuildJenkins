@@ -4,7 +4,7 @@ pipeline {
         maven "MAVEN"
     }
     environment {
-     JENKINS_NODE_COOKIE = dontKillMe '/usr/apache/bin/httpd'
+     JENKINS_NODE_COOKIE = dontKillMe 
     }
     stages {
     
