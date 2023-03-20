@@ -4,7 +4,7 @@ pipeline {
         maven "MAVEN"
     }
     environment {
-     BUILD_ID=dontKillMe /usr/apache/bin/httpd
+     JENKINS_NODE_COOKIE = 'dontKillMe /usr/apache/bin/httpd'
     }
     stages {
     
@@ -28,7 +28,7 @@ pipeline {
       		steps {
       			
       			sh 'chmod +x ./mvnw'
-      		    sh 'java -jar /var/lib/jenkins/workspace/Test/target/baseRestApi-0.0.1-SNAPSHOT.jar &'
+      		    sh 'java -Dhudson.util.ProcessTree.disable=true -jar /var/lib/jenkins/workspace/Test/target/baseRestApi-0.0.1-SNAPSHOT.jar &'
       			
     		}
     	}
