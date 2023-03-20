@@ -5,12 +5,7 @@ pipeline {
     }
     stages {
     
-       stage('Stop Server'){
-            steps{
-               	sh 'chmod +x ./mvnw'
-      		    sh 'nohup ./mvnw spring-boot:stop'
-            }
-        }
+   
     
         stage('Initialize'){
             steps{
