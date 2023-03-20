@@ -22,9 +22,8 @@ pipeline {
         }
         
        stage("Deployment") {
-        withEnv(['BUILD_ID=dontKillMe']){
       		steps {
-      		
+      			withEnv(['BUILD_ID=dontKillMe']){
       			sh 'chmod +x ./mvnw'
       		    sh 'java -jar /var/lib/jenkins/workspace/Test/target/baseRestApi-0.0.1-SNAPSHOT.jar &'
       			}
