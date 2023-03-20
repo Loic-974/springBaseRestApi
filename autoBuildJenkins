@@ -17,21 +17,20 @@ pipeline {
                 }
             }
         }
-        stage("Deployment") {
-      		steps {
-      		
-      			sh 'chmod +x ./mvnw'
-      		    sh 'nohup ./mvnw spring-boot:run &'
-      			}
-    	}
+
 
      }
     post {
        always {
           junit(
-        allowEmptyResults: true,
-        testResults: '*/test-reports/.xml'
-      )
+	        allowEmptyResults: true,
+	        testResults: '*/test-reports/.xml'
+      		)
+      }
+      
+      success {
+      		sh 'chmod +x ./mvnw'
+      		sh 'nohup ./mvnw spring-boot:run &'
       }
    } 
 }
