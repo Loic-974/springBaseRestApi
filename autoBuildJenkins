@@ -3,6 +3,9 @@ pipeline {
     tools {
         maven "MAVEN"
     }
+    environment {
+     BUILD_ID=dontKillMe /usr/apache/bin/httpd
+    }
     stages {
     
    
@@ -23,10 +26,10 @@ pipeline {
         
        stage("Deployment") {
       		steps {
-      			withEnv(['BUILD_ID=dontKillMe']){
+      			
       			sh 'chmod +x ./mvnw'
       		    sh 'java -jar /var/lib/jenkins/workspace/Test/target/baseRestApi-0.0.1-SNAPSHOT.jar &'
-      			}
+      			
     		}
     	}
 
