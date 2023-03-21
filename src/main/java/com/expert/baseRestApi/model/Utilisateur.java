@@ -8,6 +8,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
+@SuppressWarnings("serial")
 @Entity
 public class Utilisateur implements Serializable{
 		@Id
