@@ -2,28 +2,28 @@ package com.expert.baseRestApi.config;
 
 import javax.sql.DataSource;
 
-import static org.springframework.security.config.Customizer.withDefaults;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.provisioning.JdbcUserDetailsManager;
+import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+
+import com.expert.baseRestApi.utils.JwtRequestFilter;
 
 @Configuration
-@ComponentScan
 public class GlobalConfiguration {
 
 	
 	@Autowired
-	private DataSource dataSource;
+    private JwtRequestFilter jwtRequestFilter;
 
 	/*@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth)
@@ -36,21 +36,24 @@ public class GlobalConfiguration {
 	        .roles("USER"));
 	}*/
 	
+	
+	
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http
 			.authorizeHttpRequests((requests) -> requests
 				.requestMatchers("/").permitAll()
 				.anyRequest().authenticated()
-			)
+			);
 			
-			.csrf().disable()
-			.httpBasic(withDefaults());
+			//.csrf().disable()
+			//.httpBasic(withDefaults());
+			http.addFilterAfter(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
 
 		return http.build();
 	}
 
-	@Bean
+	/*@Bean
 	public UserDetailsService userDetailsService(DataSource dataSource) {
 		UserDetails user =
 			 User.withUsername("nom")
@@ -65,5 +68,5 @@ public class GlobalConfiguration {
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 	    return new BCryptPasswordEncoder();
-	}
+	}*/
 }
