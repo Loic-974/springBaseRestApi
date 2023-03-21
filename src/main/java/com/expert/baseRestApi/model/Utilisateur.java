@@ -2,6 +2,8 @@ package com.expert.baseRestApi.model;
 
 import java.io.Serializable;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -35,8 +37,10 @@ public class Utilisateur implements Serializable{
 		}
 
 		public void setPassword(String password) {
-			this.password = password;
+			BCryptPasswordEncoder bcrypt = new BCryptPasswordEncoder();
+			this.password =  bcrypt.encode(password);
 		}
+		
 
 		public String getEmail() {
 			return email;
