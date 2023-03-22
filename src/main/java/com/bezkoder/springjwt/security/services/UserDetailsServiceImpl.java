@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.bezkoder.springjwt.models.User;
 import com.bezkoder.springjwt.repository.UserRepository;
 
+
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
   @Autowired

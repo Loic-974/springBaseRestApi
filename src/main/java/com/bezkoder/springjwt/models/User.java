@@ -3,33 +3,33 @@ package com.bezkoder.springjwt.models;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
-
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.Table;
+import jakarta.persistence.JoinColumn;
 @Entity
-@Table(name = "users", 
-    uniqueConstraints = { 
-      @UniqueConstraint(columnNames = "username"),
-      @UniqueConstraint(columnNames = "email") 
-    })
+@Table(name = "users")
 public class User {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @NotBlank
-  @Size(max = 20)
+  @jakarta.validation.constraints.NotBlank
+  @jakarta.validation.constraints.Size(max = 20)
   private String username;
 
-  @NotBlank
-  @Size(max = 50)
-  @Email
+  @jakarta.validation.constraints.NotBlank
+  @jakarta.validation.constraints.Size(max = 50)
+  @jakarta.validation.constraints.Email
   private String email;
 
-  @NotBlank
-  @Size(max = 120)
+  @jakarta.validation.constraints.NotBlank
+  @jakarta.validation.constraints.Size(max = 120)
   private String password;
 
   @ManyToMany(fetch = FetchType.LAZY)

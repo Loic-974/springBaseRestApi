@@ -1,12 +1,12 @@
 package com.bezkoder.springjwt.payload.request;
 
-import javax.validation.constraints.NotBlank;
+
 
 public class LoginRequest {
-	@NotBlank
+	@jakarta.validation.constraints.NotBlank
   private String username;
 
-	@NotBlank
+	@jakarta.validation.constraints.NotBlank
 	private String password;
 
 	public String getUsername() {

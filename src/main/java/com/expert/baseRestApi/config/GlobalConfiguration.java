@@ -1,5 +1,5 @@
 package com.expert.baseRestApi.config;
-
+/*
 import javax.sql.DataSource;
 
 import static org.springframework.security.config.Customizer.withDefaults;
@@ -34,7 +34,7 @@ public class GlobalConfiguration {
 	      .withUser(User.withUsername("user") 
 	        .password(passwordEncoder().encode("pass"))
 	        .roles("USER"));
-	}*/
+	}
 	
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -66,4 +66,4 @@ public class GlobalConfiguration {
 	public PasswordEncoder passwordEncoder() {
 	    return new BCryptPasswordEncoder();
 	}
-}
+}*/
