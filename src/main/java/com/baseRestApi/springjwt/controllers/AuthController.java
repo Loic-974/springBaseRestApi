@@ -30,6 +30,11 @@ import com.baseRestApi.springjwt.repository.UserRepository;
 import com.baseRestApi.springjwt.security.jwt.JwtUtils;
 import com.baseRestApi.springjwt.security.services.UserDetailsImpl;
 
+/**
+ * Class qui s'occupe de l'authentification.
+ * @author yann.bundy
+ *
+ */
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/auth")
@@ -49,6 +54,11 @@ public class AuthController {
   @Autowired
   JwtUtils jwtUtils;
 
+  /**
+   * 
+   * @param loginRequest
+   * @return
+   */
   @PostMapping("/signin")
   public ResponseEntity<?> authenticateUser(@jakarta.validation.Valid @RequestBody LoginRequest loginRequest) {
 
@@ -70,6 +80,11 @@ public class AuthController {
                          roles));
   }
 
+  /**
+   * 
+   * @param signUpRequest
+   * @return
+   */
   @PostMapping("/signup")
   public ResponseEntity<?> registerUser(@jakarta.validation.Valid @RequestBody SignupRequest signUpRequest) {
     if (userRepository.existsByUsername(signUpRequest.getUsername())) {

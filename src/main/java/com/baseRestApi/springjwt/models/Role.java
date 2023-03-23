@@ -9,6 +9,11 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+/**
+ * modele roles.
+ * @author yann.bundy
+ *
+ */
 @Entity
 @Table(name = "roles")
 public class Role {
@@ -24,6 +29,10 @@ public class Role {
 
   }
 
+  /**
+   * 
+   * @param name
+   */
   public Role(ERole name) {
     this.name = name;
   }
@@ -40,6 +49,10 @@ public class Role {
     return name;
   }
 
+  /**
+   * 
+   * @param name
+   */
   public void setName(ERole name) {
     this.name = name;
   }

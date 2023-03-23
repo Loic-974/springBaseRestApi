@@ -12,6 +12,12 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.JoinColumn;
+
+/**
+ * modele user.
+ * @author yann.bundy
+ *
+ */
 @Entity
 @Table(name = "users")
 public class User {
@@ -41,6 +47,12 @@ public class User {
   public User() {
   }
 
+  /**
+   * 
+   * @param username
+   * @param email
+   * @param password
+   */
   public User(String username, String email, String password) {
     this.username = username;
     this.email = email;
@@ -59,6 +71,10 @@ public class User {
     return username;
   }
 
+  /**
+   * 
+   * @param username
+   */
   public void setUsername(String username) {
     this.username = username;
   }
@@ -67,6 +83,10 @@ public class User {
     return email;
   }
 
+  /**
+   * 
+   * @param email
+   */
   public void setEmail(String email) {
     this.email = email;
   }
@@ -75,6 +95,10 @@ public class User {
     return password;
   }
 
+  /**
+   * 
+   * @param password
+   */
   public void setPassword(String password) {
     this.password = password;
   }
@@ -83,6 +107,10 @@ public class User {
     return roles;
   }
 
+  /**
+   * 
+   * @param roles
+   */
   public void setRoles(Set<Role> roles) {
     this.roles = roles;
   }
