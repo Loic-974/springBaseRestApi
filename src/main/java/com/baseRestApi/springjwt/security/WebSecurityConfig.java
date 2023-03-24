@@ -89,6 +89,8 @@ public class WebSecurityConfig { // extends WebSecurityConfigurerAdapter {
         .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
         . authorizeHttpRequests().requestMatchers("/api/auth/**").permitAll()
         .requestMatchers("/api/test/**").permitAll()
+        .requestMatchers("/swagger-ui/**").permitAll()
+        .requestMatchers("/v3/**").permitAll()
         .anyRequest().authenticated();
     
     http.authenticationProvider(authenticationProvider());
