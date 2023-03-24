@@ -29,7 +29,7 @@ pipeline {
       		steps {
       			
       			sh 'chmod +x ./mvnw'
-      		    sh 'java -Dhudson.util.ProcessTree.disable=true -jar /var/lib/jenkins/workspace/Test/target/baseRestApi-0.0.1-SNAPSHOT.jar &'
+      		    sh 'java -Dhudson.util.ProcessTree.disable=true -jar /var/lib/jenkins/workspace/Test/target/baseRestApi-0.0.1-SNAPSHOT.jar '
       			
     		}
     	}
